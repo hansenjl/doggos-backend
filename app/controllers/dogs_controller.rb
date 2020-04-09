@@ -15,7 +15,7 @@ class DogsController < ApplicationController
 
   # POST /dogs
   def create
-    @dog = Dog.new(dog_params)
+    @dog = Dog.find_or_create_by(dog_params)
 
     if @dog.save
       render json: @dog, status: :created, location: @dog
